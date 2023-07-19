@@ -4,15 +4,15 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 4.20.0"
     }
-    ocm = {
+    rhcs = {
       #version = ">= 0.1"
-      version = "0.0.2"      
-      source  = "terraform-redhat/ocm"
+      version = "1.1.0"      
+      source  = "terraform-redhat/rhcs"
     }
   }
 }
 
-provider "ocm" {
+provider "rhcs" {
   token = var.token
   url = var.url
 }
