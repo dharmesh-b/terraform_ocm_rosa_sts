@@ -19,9 +19,10 @@ data "aws_caller_identity" "current" {
 }
 
 
-resource "ocm_cluster_rosa_classic" "rosa_sts_cluster" {
+resource "rhcs_cluster_rosa_classic" "rosa_sts_cluster" {
   name           = var.cluster_name
   cloud_region   = var.aws_region
+  version        = var.openshift_version
   multi_az = var.multi_az
   aws_account_id     = data.aws_caller_identity.current.account_id
   availability_zones = var.availability_zones
@@ -37,8 +38,8 @@ resource "ocm_cluster_rosa_classic" "rosa_sts_cluster" {
 
 }
 
-/*resource "ocm_cluster_wait" "rosa_cluster" {
-  cluster = ocm_cluster_rosa_classic.rosa_sts_cluster.id
+/*resource "rhcs_cluster_wait" "rosa_cluster" {
+  cluster = rhcs_cluster_rosa_classic.rosa_sts_cluster.id
   # timeout in minutes, i.e 60
   timeout = 10
 }*/
