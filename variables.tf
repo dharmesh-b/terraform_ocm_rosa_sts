@@ -18,7 +18,7 @@ variable url {
     default = "https://api.openshift.com"
 }
 
-variable ocm_environment {
+variable rhcs_environment {
     type = string
     default = "production"
 }
@@ -85,6 +85,10 @@ variable multi_az {
     type = bool
     description = "Multi AZ Cluster for High Availability"
     default = false
+}
+
+variable "openshift_version" {
+  type    = string
 }
 
 #Private link cluster Info
@@ -179,4 +183,10 @@ variable "aad_tenant_id" {
     description = "Azure Directory (tenant) ID"
     type = string
     sensitive = true  
+}
+
+variable "private_subnet_ids" {
+  type        = list(any)
+  description = "VPC private subnets IDs for ROSA Cluster"
+  default = []
 }
