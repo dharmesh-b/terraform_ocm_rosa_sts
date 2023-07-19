@@ -16,7 +16,7 @@
 
 module "create_account_roles"{
   source = "terraform-redhat/rosa-sts/aws"
-  version = "0.0.3"
+  version = "0.0.10"
   count = var.create_account_roles ? 1 : 0
 
   create_operator_roles = false
@@ -24,6 +24,6 @@ module "create_account_roles"{
   create_account_roles = true
 
   account_role_prefix =  var.account_role_prefix
-  ocm_environment =  var.ocm_environment
+  rhcs_environment =  var.rhcs_environment
   rosa_openshift_version=  var.openshift_version
 }
