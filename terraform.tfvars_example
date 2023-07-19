@@ -1,25 +1,32 @@
+
 token="OCM TOKEN Value"
-url="https://api.openshift.com"
-operator_role_prefix="mobbtf"
-cluster_name="mobbtf-01"
-aws_region="us-east-2"
-multi_az=true
-availability_zones = ["us-east-2a","us-east-2b","us-east-2c"]
-#Private Link Cluster
-enable_private_link=true
-vpc_cidr_block="10.66.0.0/16"
-private_subnet_cidrs=["10.66.1.0/24", "10.66.2.0/24", "10.66.3.0/24"]
-public_subnet_cidrs=["10.66.101.0/24", "10.66.102.0/24", "10.66.103.0/24"]
-additional_tags={
-     Terraform = "true"
-     Environment = "dev"
-     TFOwner = "mobbtf@redhat.com"
-     ROSAClusterName="mobbtf-01"
-   }
-#ROSA Cluster Info
-create_account_roles=false
-account_role_prefix="ManagedOpenShift"
-create_vpc=true
+redhat_aws_account_id="AWS account id"
+# Module selection
+create_vpc=false
 create_aad_app=false
 create_idp_aad=false
-aad_tenant_id="AZURE_Tenant_id"
+create_account_roles=false
+#ROSA Cluster Info
+account_role_prefix="ManagedOpenShift"
+operator_role_prefix="mobbtf"
+cluster_name="rosa-rida-01"
+openshift_version="4.13.0"
+multi_az=true
+#AWS Info
+aws_region="ap-southeast-2"
+availability_zones = ["ap-southeast-2a","ap-southeast-2b","ap-southeast-2c"]
+#Private Link Cluster Info. Enable create_vpc to create new AWS VPC
+enable_private_link=true
+vpc_name="rosa-vpc"
+vpc_cidr_block="10.1.0.0/16"
+#private_subnet_cidrs=["10.1.0.0/18", "10.1.64.0/18", "10.1.128.0/17"]
+private_subnet_ids=["subnet-0551f84b7c1401362","subnet-088d838025ba2e52e","subnet-069d2e21d701925cc"]
+#public_subnet_cidrs=["10.66.101.0/24", "10.66.102.0/24", "10.66.103.0/24"]
+additional_tags={
+     Terraform = "true"
+     TFEnvironment = "dev"
+     TFOwner = "dbhamre@redhat.com"
+     ROSAClusterName="rosa-rida-01"
+   }
+#Azure AD app reg Info
+#aad_tenant_id="AZURE_Tenant_id"
