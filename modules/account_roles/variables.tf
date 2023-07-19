@@ -4,7 +4,7 @@ variable create_account_roles {
     default = false
 }
 
-variable ocm_environment {
+variable rhcs_environment {
     type = string
     default = "production"
 }
