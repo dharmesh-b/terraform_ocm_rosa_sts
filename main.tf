@@ -1,7 +1,7 @@
 
 module account_role {
     source = "./modules/account_roles"
-    ocm_environment = var.ocm_environment    
+    rhcs_environment = var.rhcs_environment    
     openshift_version = var.rosa_openshift_version
     account_role_prefix = var.account_role_prefix
 } 
@@ -39,6 +39,7 @@ module openshift_vpc {
 module "rosa_cluster" {
     source = "./modules/rosa_cluster"
     cluster_name = var.cluster_name
+    openshift_version = var.openshift_version
     token = var.token
     url = var.url
     aws_region = var.aws_region
@@ -48,7 +49,8 @@ module "rosa_cluster" {
     operator_role_prefix = var.operator_role_prefix
     #private link cluster values
     enable_private_link = var.enable_private_link
-    private_subnet_ids = var.enable_private_link ? module.byo_vpc.private_subnets : []
+    #private_subnet_ids = var.enable_private_link ? module.byo_vpc.private_subnets []
+    private_subnet_ids = var.private_subnet_ids
     vpc_cidr_block = var.enable_private_link ? var.vpc_cidr_block : null
 } 
 
