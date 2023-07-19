@@ -63,3 +63,6 @@ variable "private_subnet_ids" {
   default = []
 }
 
+variable "openshift_version" {
+  type    = string
+}
